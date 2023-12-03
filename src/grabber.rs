@@ -1,7 +1,9 @@
 use ahref::parser::Parser;
+use regex::Regex;
 
 pub struct Grabber {
     start_link: String,
+    base_link: String,
     current_link: String,
 }
 
@@ -9,6 +11,7 @@ impl Grabber {
     pub fn new(start_link: String) -> Self {
         Grabber {
             current_link: start_link.clone(),
+            base_link: Grabber::get_base_link(&start_link),
             start_link,
         }
     }
@@ -24,5 +27,12 @@ impl Grabber {
             Ok(response) => response.text().unwrap(),
             _ => String::from(""),
         }
+    }
+
+    pub fn get_base_link(link: &String) -> String {
+        let regex_string = r"^https?:\/\/[^#?\/]+";
+        let regex_link = Regex::new(regex_string).unwrap();
+
+        regex_link.find(link).unwrap().as_str().to_string()
     }
 }

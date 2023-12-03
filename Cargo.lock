@@ -243,6 +243,7 @@ name = "graburl"
 version = "0.1.2"
 dependencies = [
  "ahref",
+ "regex",
  "reqwest",
 ]
 
