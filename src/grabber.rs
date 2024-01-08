@@ -1,6 +1,6 @@
+use crate::link::Link;
 use ahref::parser::Parser;
 use regex::Regex;
-use crate::link::Link;
 
 pub struct Grabber {
     base_link: String,

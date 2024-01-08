@@ -28,9 +28,9 @@ dependencies = [
 
 [[package]]
 name = "ahref"
-version = "0.2.9"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "963542e1a8ecabcd6a6d9b5ae7444a62b5ac5fccbf13cec4e3237d3cfe2fff1e"
+checksum = "3927effc64ad4dfed8e7eff0a3a08d27437c41c91b575d8f2c81e170af444d4e"
 dependencies = [
  "regex",
  "tagparser",
@@ -240,7 +240,7 @@ checksum = "6fb8d784f27acf97159b40fc4db5ecd8aa23b9ad5ef69cdd136d3bc80665f0c0"
 
 [[package]]
 name = "graburl"
-version = "0.1.6"
+version = "0.1.7"
 dependencies = [
  "ahref",
  "regex",
