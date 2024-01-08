@@ -1,8 +1,8 @@
 use ahref::parser::Parser;
 use regex::Regex;
+use crate::link::Link;
 
 pub struct Grabber {
-    start_link: String,
     base_link: String,
     current_link: String,
 }
@@ -12,18 +12,28 @@ impl Grabber {
         Grabber {
             current_link: start_link.clone(),
             base_link: Grabber::get_base_link(&start_link),
-            start_link,
         }
     }
 
-    pub fn show_all_urls(self) -> Vec<String> {
+    pub fn show_all_urls(&self) -> Vec<String> {
         let response = self.get_html();
         let mut parser = Parser::new(response);
-        parser.parse_links()
+        let links = parser.parse_links();
+        let mut full_links = Vec::new();
+
+        for link in links {
+            if Link::new(link.clone()).is_local_link() {
+                full_links.push(format!("{}", link));
+            } else {
+                full_links.push(format!("{}{}", &self.base_link, link));
+            }
+        }
+
+        full_links
     }
 
-    fn get_html(self) -> String {
-        match reqwest::blocking::get(self.current_link) {
+    fn get_html(&self) -> String {
+        match reqwest::blocking::get(&self.current_link) {
             Ok(response) => response.text().unwrap(),
             _ => String::from(""),
         }

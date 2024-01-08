@@ -240,7 +240,7 @@ checksum = "6fb8d784f27acf97159b40fc4db5ecd8aa23b9ad5ef69cdd136d3bc80665f0c0"
 
 [[package]]
 name = "graburl"
-version = "0.1.4"
+version = "0.1.6"
 dependencies = [
  "ahref",
  "regex",

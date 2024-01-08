@@ -1,4 +1,5 @@
 pub mod grabber;
+pub mod link;
 
 use crate::grabber::Grabber;
 

@@ -2,7 +2,7 @@
 name = "graburl"
 description = "Get all url's from website"
 authors = ["tenqz"]
-version = "0.1.5"
+version = "0.1.6"
 edition = "2021"
 rust-version = "1.72.0"
 repository = "https://github.com/tenqz/graburl"
