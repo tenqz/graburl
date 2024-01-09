@@ -16,12 +16,10 @@ impl Grabber {
     }
 
     pub fn show_all_urls(&self) -> Vec<String> {
-        let response = self.get_html();
-        let mut parser = Parser::new(response);
-        let links = parser.parse_links();
+        let mut parser = Parser::new(self.get_html());
         let mut full_links = Vec::new();
 
-        for link in links {
+        for link in parser.parse_links() {
             if Link::new(link.clone()).is_local_link() {
                 full_links.push(format!("{}", link));
             } else {
